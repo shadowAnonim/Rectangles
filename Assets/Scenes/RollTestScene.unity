@@ -517,7 +517,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 3289650
+    rgba: 4281479730
   m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1193,6 +1193,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14ea68a3d9260874a8d2ce1b01235496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridTransform: {fileID: 1933326538}
+  vertexPrefab: {fileID: 1524340717891867957, guid: 27f04995f0fdc094fa02f99752486a18, type: 3}
+  rectanglePrefab: {fileID: 6464283129062800507, guid: 83c487e3334c1fc43bdff1fd9fe2b561, type: 3}
 --- !u!4 &1698553698
 Transform:
   m_ObjectHideFlags: 0
@@ -1227,7 +1230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1763067861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1327,6 +1330,37 @@ MonoBehaviour:
   - {fileID: 235440831}
   - {fileID: 1208483515}
   diceButton: {fileID: 1054438747}
+--- !u!1 &1933326537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1933326538}
+  m_Layer: 0
+  m_Name: Grid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1933326538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933326537}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1335,3 +1369,4 @@ SceneRoots:
   - {fileID: 1763067864}
   - {fileID: 1476084269}
   - {fileID: 1698553698}
+  - {fileID: 1933326538}
