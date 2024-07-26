@@ -5,6 +5,7 @@ using UnityEngine;
 public class Vertex : MonoBehaviour
 {
     public Vector2 position;
+    public bool interactable;
 
     private void OnMouseEnter()
     {
@@ -18,7 +19,9 @@ public class Vertex : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
-        print(GameController.S.startPoint + " " +  position);
+        if (GameController.S.gameMode != GameMode.Drawing)
+            return;
+
         if (GameController.S.startPoint is null)
             GameController.S.startPoint = position;
         else
