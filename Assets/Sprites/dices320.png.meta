@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8d323f9588c07da4bbf92acd83ebede7
+guid: a3a8c2b1798c16a4aa08720b9a64d22f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dices32_0
+      name: dices320_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 1
-        width: 30
-        height: 30
+        x: 10
+        y: 10
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebdb3f9bececef740b6e91689a1c4882
-      internalID: 1490426161
+      spriteID: 5943cca6197bc59468d1868cd30ec288
+      internalID: -819467149
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dices32_1
+      name: dices320_1
       rect:
         serializedVersion: 2
-        x: 33
-        y: 1
-        width: 30
-        height: 30
+        x: 330
+        y: 10
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 342b4ad44d54e0747b360fe10e1f56a2
-      internalID: 1517533632
+      spriteID: f40af58989159bc4fb92ca2a6ae7a369
+      internalID: -948515002
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dices32_2
+      name: dices320_2
       rect:
         serializedVersion: 2
-        x: 65
-        y: 1
-        width: 30
-        height: 30
+        x: 650
+        y: 10
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26a9ee3df99c2944eadbe56d340a7f88
-      internalID: 1932329984
+      spriteID: a9c8d6e76f19ec545892e417ceaf51c1
+      internalID: 958810737
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dices32_3
+      name: dices320_3
       rect:
         serializedVersion: 2
-        x: 97
-        y: 1
-        width: 30
-        height: 30
+        x: 970
+        y: 10
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f00bd4547ef7184499fc2bdc17dda0c5
-      internalID: -67952744
+      spriteID: 32484b0e3c5c13d41903ee5cf2f35b18
+      internalID: 851178318
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dices32_4
+      name: dices320_4
       rect:
         serializedVersion: 2
-        x: 129
-        y: 1
-        width: 30
-        height: 30
+        x: 1290
+        y: 10
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 184c18b7c376a1049909aa47bc410e86
-      internalID: -1875781153
+      spriteID: 506b3905805ceb1489a0e93540345ed5
+      internalID: -1901322803
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dices32_5
+      name: dices320_5
       rect:
         serializedVersion: 2
-        x: 161
-        y: 1
-        width: 30
-        height: 30
+        x: 1610
+        y: 10
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 241da243dc8f11843bb0778c924d683d
-      internalID: -1458310767
+      spriteID: d95363b9d7eef64418dc4bf3c4c7ea07
+      internalID: 63972861
       vertices: []
       indices: 
       edges: []
@@ -246,12 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      dices32_0: 1490426161
-      dices32_1: 1517533632
-      dices32_2: 1932329984
-      dices32_3: -67952744
-      dices32_4: -1875781153
-      dices32_5: -1458310767
+      dices320_0: -819467149
+      dices320_1: -948515002
+      dices320_2: 958810737
+      dices320_3: 851178318
+      dices320_4: -1901322803
+      dices320_5: 63972861
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

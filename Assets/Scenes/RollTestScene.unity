@@ -159,7 +159,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.14723384, g: 0.23018861, b: 0.18997465, a: 0}
+  m_BackGroundColor: {r: 0.30980393, g: 0.3882353, b: 0.40392157, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -551,7 +551,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1458310767, guid: 8d323f9588c07da4bbf92acd83ebede7, type: 3}
+  m_Sprite: {fileID: 63972861, guid: a3a8c2b1798c16a4aa08720b9a64d22f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -677,7 +677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9647059, g: 0.6666667, b: 0.59607846, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -975,7 +975,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1458310767, guid: 8d323f9588c07da4bbf92acd83ebede7, type: 3}
+  m_Sprite: {fileID: 63972861, guid: a3a8c2b1798c16a4aa08720b9a64d22f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1228,7 +1228,16 @@ MonoBehaviour:
   vertexPrefab: {fileID: 1524340717891867957, guid: 27f04995f0fdc094fa02f99752486a18, type: 3}
   rectanglePrefab: {fileID: 6464283129062800507, guid: 83c487e3334c1fc43bdff1fd9fe2b561, type: 3}
   gameMode: 0
-  curPlayerIndex: 0
+  players:
+  - Name: "\u0421\u0438\u043D\u0438\u0439"
+    Color: {r: 0.47843137, g: 0.61960787, b: 0.62352943, a: 1}
+    points: 0
+  - Name: "\u041A\u0440\u0430\u0441\u043D\u044B\u0439"
+    Color: {r: 0.9647059, g: 0.6666667, b: 0.59607846, a: 1}
+    points: 0
+  curPlayerIndex: -1
+  grid: []
+  startVertex: {fileID: 0}
 --- !u!4 &1698553698
 Transform:
   m_ObjectHideFlags: 0
@@ -1362,12 +1371,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diceSprites:
-  - {fileID: 1490426161, guid: 8d323f9588c07da4bbf92acd83ebede7, type: 3}
-  - {fileID: 1517533632, guid: 8d323f9588c07da4bbf92acd83ebede7, type: 3}
-  - {fileID: 1932329984, guid: 8d323f9588c07da4bbf92acd83ebede7, type: 3}
-  - {fileID: -67952744, guid: 8d323f9588c07da4bbf92acd83ebede7, type: 3}
-  - {fileID: -1875781153, guid: 8d323f9588c07da4bbf92acd83ebede7, type: 3}
-  - {fileID: -1458310767, guid: 8d323f9588c07da4bbf92acd83ebede7, type: 3}
+  - {fileID: -819467149, guid: a3a8c2b1798c16a4aa08720b9a64d22f, type: 3}
+  - {fileID: -948515002, guid: a3a8c2b1798c16a4aa08720b9a64d22f, type: 3}
+  - {fileID: 958810737, guid: a3a8c2b1798c16a4aa08720b9a64d22f, type: 3}
+  - {fileID: 851178318, guid: a3a8c2b1798c16a4aa08720b9a64d22f, type: 3}
+  - {fileID: -1901322803, guid: a3a8c2b1798c16a4aa08720b9a64d22f, type: 3}
+  - {fileID: 63972861, guid: a3a8c2b1798c16a4aa08720b9a64d22f, type: 3}
   dice:
   - {fileID: 743732553}
   - {fileID: 1209689356}

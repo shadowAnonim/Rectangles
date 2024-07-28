@@ -20,14 +20,11 @@ public class UI : MonoBehaviour
 
     private void Awake()
     {
-        if (S is null)
+        if (S == null)
             S = this;
         else
             Debug.LogError("Second instance of \"UI\" class!");
-    }
 
-    private void Start()
-    {
         diceAnimator = diceButton.transform.parent.GetComponent<Animator>();
     }
 
