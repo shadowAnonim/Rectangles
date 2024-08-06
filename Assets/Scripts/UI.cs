@@ -59,7 +59,7 @@ public class UI : MonoBehaviour
         {
             dice[0].image.sprite = diceSprites[Random.Range(1, 7) - 1];
             dice[1].image.sprite = diceSprites[Random.Range(1, 7) - 1];
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.15f);
 
         }
         var values = GameController.S.RollDice();

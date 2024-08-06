@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum VertexState { Free, Edge, Inner}
+
 public class Vertex : MonoBehaviour
 {
-    public Vector2 position;
-
+    public Vector2Int position;
+    public VertexState state = VertexState.Free;
     
     private bool interactable;
     private Player player;
@@ -61,11 +63,14 @@ public class Vertex : MonoBehaviour
         if (GameController.S.gameMode != GameMode.Drawing)
             return;
 
-        if (GameController.S.startVertex == null)
-            GameController.S.startVertex = this;
+        if (GameController.S.StartVertex == null || 
+            player == GameController.S.CurrentPlayer)
+        {
+            GameController.S.StartVertex = this;
+        }    
         else
         {
-            Vertex startVertex = GameController.S.startVertex;
+            Vertex startVertex = GameController.S.StartVertex;
             GameController.S.DrawRectangle(
                 (startVertex.transform.position + transform.position) / 2,
                 Mathf.Abs((startVertex.position - position).x),
