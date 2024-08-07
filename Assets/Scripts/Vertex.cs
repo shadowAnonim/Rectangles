@@ -59,18 +59,20 @@ public class Vertex : MonoBehaviour
     {
         if (!interactable)
             return;
-
         if (GameController.S.gameMode != GameMode.Drawing)
             return;
 
-        if (GameController.S.StartVertex == null || 
-            player == GameController.S.CurrentPlayer)
+        Vertex startVertex = GameController.S.StartVertex;
+        if (startVertex == null)
         {
             GameController.S.StartVertex = this;
-        }    
+        }
+        else if (startVertex == this)
+        {
+            GameController.S.StartVertex = null;
+        }
         else
         {
-            Vertex startVertex = GameController.S.StartVertex;
             GameController.S.DrawRectangle(startVertex, this);
         }
     }

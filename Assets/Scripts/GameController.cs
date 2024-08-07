@@ -27,6 +27,11 @@ public class GameController : MonoBehaviour
     public int gridWidth, gridHeight;
     private Vertex startVertex = null;
 
+    public Player CurrentPlayer
+    {
+        get => players[curPlayerIndex];
+    }
+
     public Vertex StartVertex
     {
         get => startVertex;
@@ -34,19 +39,20 @@ public class GameController : MonoBehaviour
         {
             startVertex = value;
             ResetInteractableVertices();
-            if (startVertex != null)
+
+            if (startVertex == null)
             {
-                var vertices = SelectAvailableVertices();
-                foreach (var vertex in vertices)
-                    vertex.Interactable = true;
+                MakeVerticesInteractable(v => v.Player == CurrentPlayer &&
+                    v.state == VertexState.Edge);
+            }
+            else
+            {
+                MakeVerticesInteractable(v => SelectAvailableVertices().Contains(v));
             }
         }
     }
 
-    public Player CurrentPlayer
-    {
-        get => players[curPlayerIndex];
-    }
+
 
     private void Awake()
     {
@@ -71,6 +77,8 @@ public class GameController : MonoBehaviour
 
         curPlayerIndex = (curPlayerIndex + 1) % (players.Length);
         ResetInteractableVertices();
+        MakeVerticesInteractable(v => v.Player == CurrentPlayer &&
+            v.state == VertexState.Edge);
 
         UI.S.UpdateUI();
         UI.S.ShowDice();
@@ -105,7 +113,7 @@ public class GameController : MonoBehaviour
         cornerVertex.state = VertexState.Edge;
     }
 
-    #region vertices functions
+    #region vertices methods
     private Vertex[] GetAllVertices()
     {
         Vertex[] vertices = new Vertex[gridWidth * gridHeight];
@@ -135,16 +143,18 @@ public class GameController : MonoBehaviour
         Vertex[] vertices = GetAllVertices().Where(v => v.Interactable).ToArray();
         foreach (var vertex in vertices)
             vertex.Interactable = false;
+    }
 
-        vertices = GetAllVertices().Where(v => v.Player == CurrentPlayer &&
-            v.state == VertexState.Edge).ToArray();
+    private void MakeVerticesInteractable(System.Func<Vertex, bool> filter)
+    {
+        Vertex[] vertices = GetAllVertices().Where(filter).ToArray();
         foreach (var vertex in vertices)
             vertex.Interactable = true;
     }
 
     private List<Vertex> SelectAvailableVertices()
     {
-        List<Vertex> availableVertices = new();
+        List<Vertex> availableVertices = new() {startVertex};
         Vertex vertex;
         int[] arr = { -1, 1 };
         for (int _ = 0; _ < 2; _++)
@@ -156,7 +166,7 @@ public class GameController : MonoBehaviour
                     {
                         vertex = grid[startVertex.position.x + i * curValues.Item1,
                             startVertex.position.y + j * curValues.Item2];
-                        if (vertex.state == VertexState.Free &&
+                        if (vertex.state != VertexState.Inner &&
                             IsRectangleFree(startVertex, vertex))
                             availableVertices.Add(vertex);
                     }
@@ -169,7 +179,7 @@ public class GameController : MonoBehaviour
     }
     #endregion
 
-    #region rectangle functions
+    #region rectangle methods
 
     public void DrawRectangle(Vertex startVertex, Vertex endVertex)
     {
