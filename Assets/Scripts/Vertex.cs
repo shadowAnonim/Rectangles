@@ -71,10 +71,7 @@ public class Vertex : MonoBehaviour
         else
         {
             Vertex startVertex = GameController.S.StartVertex;
-            GameController.S.DrawRectangle(
-                (startVertex.transform.position + transform.position) / 2,
-                Mathf.Abs((startVertex.position - position).x),
-                Mathf.Abs((startVertex.position - position).y));
+            GameController.S.DrawRectangle(startVertex, this);
         }
     }
 

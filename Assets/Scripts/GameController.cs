@@ -157,9 +157,7 @@ public class GameController : MonoBehaviour
                         vertex = grid[startVertex.position.x + i * curValues.Item1,
                             startVertex.position.y + j * curValues.Item2];
                         if (vertex.state == VertexState.Free &&
-                            IsRectangleFree((startVertex.transform.position + vertex.transform.position) / 2,
-                                Mathf.Abs((startVertex.position - vertex.position).x),
-                                Mathf.Abs((startVertex.position - vertex.position).y)))
+                            IsRectangleFree(startVertex, vertex))
                             availableVertices.Add(vertex);
                     }
                     catch (System.IndexOutOfRangeException) { }
@@ -173,11 +171,13 @@ public class GameController : MonoBehaviour
 
     #region rectangle functions
 
-    public void DrawRectangle(Vector2 position, float width, float height)
+    public void DrawRectangle(Vertex startVertex, Vertex endVertex)
     {
         gameMode = GameMode.Rolling;
 
-        GameObject rect = Instantiate(rectanglePrefab, position, Quaternion.identity, gridTransform);
+        Vector2 rectPos = (startVertex.transform.position + endVertex.transform.position) / 2;
+        GetRectangleWidthHeight(startVertex, endVertex, out int width, out int height);
+        GameObject rect = Instantiate(rectanglePrefab, rectPos, Quaternion.identity, gridTransform);
 
         Transform top, bottom, left, right;
         top = rect.transform.Find("Top");
@@ -202,7 +202,7 @@ public class GameController : MonoBehaviour
         right.localPosition = Vector3.right * width / 2;
 
         CurrentPlayer.points += (int)(width * height);
-        Vector2Int startPos = GetStartCorner(position, width, height);
+        Vector2Int startPos = GetLeftBottomCorner(startVertex, endVertex);
         Vertex vertex;
         for (int i = 0; i <= width; i++)
             for (int j = 0; j <= height; j++)
@@ -214,7 +214,7 @@ public class GameController : MonoBehaviour
             for (int j = 0; j <= height; j++)
             {
                 vertex = grid[startPos.x + i, startPos.y + j];
-                if (i == 0 || j == 0 || i == width || j == height)
+                if (IsVertexOnEdgeOfRectangle(vertex, startVertex, endVertex))
                 {
                     if (CountAdjacentFreeVertices(startPos + new Vector2Int(i, j)) != 0)
                         vertex.state = VertexState.Edge;
@@ -228,20 +228,39 @@ public class GameController : MonoBehaviour
         NextTurn();
     }
 
-    private Vector2Int GetStartCorner(Vector2 position, float width, float height)
+    private void GetRectangleWidthHeight(Vertex startVertex, Vertex endVertex, out int width, out int height)
     {
-        return startVertex.position + Vector2Int.RoundToInt(new Vector2(
-            (position.x < startVertex.transform.position.x ? -width : 0),
-            (position.y < startVertex.transform.position.y ? -height : 0)));
+        width = Mathf.Abs(startVertex.position.x - endVertex.position.x);
+        height = Mathf.Abs(startVertex.position.y - endVertex.position.y);
+    }    
+
+    private bool IsVertexOnEdgeOfRectangle(Vertex vertex, Vertex startVertex, Vertex endVertex)
+    {
+        return vertex.position.x == startVertex.position.x || 
+            vertex.position.y == startVertex.position.y ||
+            vertex.position.x == endVertex.position.x ||
+            vertex.position.y== endVertex.position.y;
     }
 
-    private bool IsRectangleFree(Vector2 position, int width, int height)
+
+    //TODO: заменить методом, который меняет ссылки в правильном порядке
+    private Vector2Int GetLeftBottomCorner(Vertex startVertex,  Vertex endVertex)
     {
-        Vector2Int startPos = GetStartCorner(position, width, height);
+        return new Vector2Int(
+            Mathf.Min(startVertex.position.x, endVertex.position.x), 
+            Mathf.Min(startVertex.position.y, endVertex.position.y));
+    }
+
+    private bool IsRectangleFree(Vertex startVertex, Vertex endVertex)
+    {
+        Vector2Int startPos = GetLeftBottomCorner(startVertex, endVertex);
+        GetRectangleWidthHeight(startVertex, endVertex, out int width, out int height);
         for (int i = 0; i <= width; i++)
             for (int j = 0; j <= height; j++)
             {
-                if (grid[startPos.x + i, startPos.y + j].state == VertexState.Inner)
+                Vertex vertex = grid[startPos.x + i, startPos.y + j];
+                if (vertex.state == VertexState.Inner ||
+                    vertex.state == VertexState.Edge && !IsVertexOnEdgeOfRectangle(vertex, startVertex, endVertex))
                     return false;
             }
         return true;
